@@ -2,12 +2,26 @@ body{
   margin: 0;
   padding: 0;
   background: #F3F7FA;
+  font-family: "Open Sans";
 }
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
 }
 
 .container {
