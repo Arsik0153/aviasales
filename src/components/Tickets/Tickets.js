@@ -5,9 +5,14 @@ import axios from 'axios';
 
 const Tickets = ({sortMethod}) => {
 
+/*   useEffect(() => {
+    sortTickets
+  }, [sortMethod]); */
+
   const sortTickets = (tickets) => {
-    return sortMethod === "byPrice" ? (
-      tickets && tickets.sort((a, b) => {
+    console.log(sortMethod);
+    if (sortMethod === "byPrice"){
+      let sortedTickets = tickets && tickets.sort((a, b) => {
         if (a.price > b.price) {
           return 1;
         }
@@ -16,7 +21,23 @@ const Tickets = ({sortMethod}) => {
         }
         return 0;
       })
-    ) : (null);
+
+      return sortedTickets;
+    }
+    if (sortMethod === "byPriceDesc"){
+      let sortedTickets = tickets && tickets.sort((a, b) => {
+        if (a.price < b.price) {
+          return 1;
+        }
+        if (a.price > b.price) {
+          return -1;
+        }
+        return 0;
+      })
+
+      return sortedTickets;
+    }
+    
   }
 
   const [searchId, setSearchId] = useState("");
@@ -51,7 +72,7 @@ const Tickets = ({sortMethod}) => {
         setTickets(sortedData && sortedData.slice(0,10));
         console.log(sortedData && sortedData.slice(0,10));
       });
-  }, [searchId]);
+  }, [searchId, sortMethod]);
 
   return(
     <div className="tickets">
