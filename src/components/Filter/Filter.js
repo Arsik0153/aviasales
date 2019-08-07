@@ -6,7 +6,7 @@ const Filter = () => {
     <div className="filter">
       <h3>Количество пересадок</h3>
       <li>
-        <input className="styled-checkbox" id="styled-checkbox-1" type="checkbox" />
+        <input className="styled-checkbox" id="styled-checkbox-1" type="checkbox"/>
         <label htmlFor="styled-checkbox-1">Все</label>
       </li>
       <li>
