@@ -15,7 +15,6 @@ const App = () =>{
 
   const setNewSortMethod = (newSortMethod) => {
     setSortMethod(newSortMethod);
-    console.log(sortMethod);
   };
 
   return (

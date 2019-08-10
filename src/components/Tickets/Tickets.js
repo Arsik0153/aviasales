@@ -5,12 +5,7 @@ import axios from 'axios';
 
 const Tickets = ({sortMethod}) => {
 
-/*   useEffect(() => {
-    sortTickets
-  }, [sortMethod]); */
-
   const sortTickets = (tickets) => {
-    console.log(sortMethod);
     if (sortMethod === "byPrice"){
       let sortedTickets = tickets && tickets.sort((a, b) => {
         if (a.price > b.price) {
@@ -37,7 +32,6 @@ const Tickets = ({sortMethod}) => {
 
       return sortedTickets;
     }
-    
   }
 
   const [searchId, setSearchId] = useState("");
@@ -70,9 +64,13 @@ const Tickets = ({sortMethod}) => {
         let newData = data.data.tickets;
         let sortedData = sortTickets(newData);
         setTickets(sortedData && sortedData.slice(0,10));
-        console.log(sortedData && sortedData.slice(0,10));
       });
-  }, [searchId, sortMethod]);
+  }, [searchId]);
+
+  useEffect(() => {
+    let newSortedData = sortTickets(tickets);
+    setTickets(newSortedData);
+  }, [sortMethod]);
 
   return(
     <div className="tickets">
